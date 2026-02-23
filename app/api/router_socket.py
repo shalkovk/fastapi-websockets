@@ -30,6 +30,9 @@ class ConnectionManager:
                 await connection.send_json(message_with_class)
 
 
+manager = ConnectionManager()
+
+
 @router.websocket("/{room_id}/{user_id}")
 async def websocket_endpoint(websocket: WebSocket, room_id: int, user_id: int, username: str):
     await manager.connect(websocket, room_id, user_id)
