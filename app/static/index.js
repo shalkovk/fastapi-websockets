@@ -5,14 +5,6 @@ const userId = roomData.getAttribute("data-user-id");
 
 const ws = new WebSocket(`ws://localhost:8000/ws/chat/${roomId}/${userId}?username=${username}`);
 
-ws.onopen = () => {
-    console.log("Connection initialized");
-};
-
-ws.onclose = () => {
-    console.log("Connection closed");
-};
-
 ws.onmessage = (event) => {
     const messages = document.getElementById("messages");
     const messageData = JSON.parse(event.data);
